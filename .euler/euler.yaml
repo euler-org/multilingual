@@ -6,3 +6,9 @@ languages:
     runner: .euler/runner/run.py
     use_ids: false
     named_arg_type: long
+
+  python:
+    extension: py
+    runner_args:
+      - --language
+      - python

@@ -1,0 +1,23 @@
+import sys
+from time import perf_counter_ns
+
+
+def get_answer({{args.items()|map("join", ": ")|join(", ")}}) -> {{rtype}}:
+    raise NotImplementedError
+
+
+def proxy(case_key: str, {{args.items()|map("join", ": ")|join(", ")}}) -> None:
+    begin = perf_counter_ns()
+    answer = get_answer({{args|join(", ")}})
+    end = perf_counter_ns()
+    print(f"Time {case_key} {end - begin}")  # noqa: T201
+    print(f"Answer {case_key} {answer}")  # noqa: T201
+
+
+def main() -> None:
+    case_key, {{args|join(", ")}} = sys.argv[1:]
+    proxy(case_key, {{args|join(", ")}})
+
+
+if __name__ == "__main__":
+    main()

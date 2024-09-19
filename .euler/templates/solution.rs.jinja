@@ -1,0 +1,23 @@
+use std::env;
+use std::time::Instant;
+
+fn get_answer({{args.items()|map("join", ": ")|join(", ")}}) -> {{rtype}} {
+    unimplemented!();
+}
+
+fn proxy(case_key: &str, {{args.items()|map("join", ": ")|join(", ")}}) {
+    let start = Instant::now();
+    let answer = get_answer({{args|join(", ")}});
+    let duration = start.elapsed();
+    println!("Time {} {}", case_key, duration.as_nanos());
+    println!("Answer {} {}", case_key, answer);
+}
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    let case_key = &args[1];
+    {%- for key, value in args.items() %}
+    let {{key}}: {{value}} = args[{{loop.index + 1}}].parse().unwrap();
+    {% endfor -%}
+    proxy(case_key, {{args|join(", ")}});
+}

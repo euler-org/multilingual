@@ -1,0 +1,28 @@
+[package]
+name = "multilingual"
+version = "1.0.0"
+edition = "2024"
+
+authors = [
+    "Stephanos Kuma <stephanos@kuma.ai>",
+]
+description = "Example problems"
+license = "BSD-3-Clause"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = 3
+panic = "abort"
+strip = true
+overflow-checks = false
+debug = false
+rpath = false
+
+[lib]
+name = "lib"
+path = "src/lib/lib.rs"
+
+[[bin]]
+name = "p001"
+path = "src/solutions/p001.rs"

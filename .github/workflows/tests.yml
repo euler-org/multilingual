@@ -1,0 +1,63 @@
+name: tests
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unittest-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v6
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: false
+          python-version: "3.14"
+      - name: Install cli tools
+        run: |
+          uv tool install yamk
+          uv tool install eulertools
+          uv tool install yq
+      - name: Install dependencies
+        env:
+          UV_GROUPS: --no-dev --group test
+        run: |
+          cd python
+          yam install
+      - name: Test the project
+        run: |
+          cd python
+          yam -e tests
+  unittest-rust:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v6
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: false
+          python-version: "3.14"
+      - name: Install stable rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          components: rustfmt
+      - name: Install cli tools
+        run: |
+          uv tool install eulertools
+          uv tool install yamk
+          uv tool install yq
+      - name: Unittest the project
+        run: |
+          cd rust
+          rustup default stable
+          yam -e tests

@@ -1,0 +1,25 @@
+$case_keys:
+  c01:
+    - 2
+  c02:
+    - 3
+  c03:
+    - 5
+
+common:
+  id: "1"
+  title: Simple loop
+  description: |
+    A palindromic number reads the same both ways. The largest palindrome made
+    from the product of two 2-digit numbers is 9009 = 91 * 99.
+    Find the largest palindrome made from the product of two n-digit numbers.
+
+python:
+  args:
+    number_of_digits: int
+  rtype: int
+
+rust:
+  args:
+    number_of_digits: u32
+  rtype: u64

@@ -7,3 +7,26 @@ on:
   pull_request:
     branches:
       - main
+
+jobs:
+  lint-python:
+    runs-on: ubuntu-latest
+    container:
+      image: spapanik/euler-py:2.0.0
+      options: --user root
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Create and activate a virtual environment
+        run: |
+          uv venv .venv
+          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+      - name: Install dependencies
+        run: |
+          cd python
+          yam install -g main -g lint -g test
+      - name: Lint the project
+        run: |
+          cd python
+          yam -e lint

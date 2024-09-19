@@ -1,0 +1,7 @@
+# installation/build artifacts
+.yamk/
+
+# local dev
+cookbook.yaml.d/
+local/
+local.*

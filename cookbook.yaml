@@ -1,0 +1,62 @@
+$globals:
+  version: "8.1"
+
+(?P<language>.+)-build:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ build
+
+build:
+  phony: true
+  requires:
+    - python-build
+    - rust-build
+
+(?P<language>.+)-install:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ install
+
+install:
+  phony: true
+  requires:
+    - python-install
+    - rust-install
+
+(?P<language>.+)-format:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ format
+
+format:
+  phony: true
+  requires:
+    - python-format
+    - rust-format
+
+(?P<language>.+)-lint:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ lint
+
+lint:
+  phony: true
+  requires:
+    - python-lint
+    - rust-lint
+
+(?P<language>.+)-tests:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ tests
+
+tests:
+  phony: true
+  requires:
+    - python-tests
+    - rust-tests

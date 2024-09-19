@@ -1,0 +1,20 @@
+$meta:
+  version: "5.2"
+
+languages:
+  $common:
+    runner: .euler/runner/run.py
+    use_ids: false
+    named_arg_type: long
+
+  python:
+    extension: py
+    runner_args:
+      - --language
+      - python
+
+  rust:
+    extension: rs
+    runner_args:
+      - --language
+      - rust

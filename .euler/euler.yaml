@@ -1,0 +1,8 @@
+$meta:
+  version: "5.2"
+
+languages:
+  $common:
+    runner: .euler/runner/run.py
+    use_ids: false
+    named_arg_type: long

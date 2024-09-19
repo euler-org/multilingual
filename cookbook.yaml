@@ -1,0 +1,26 @@
+$globals:
+  version: "8.1"
+
+(?P<language>.+)-install:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ install
+
+(?P<language>.+)-format:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ format
+
+(?P<language>.+)-lint:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ lint
+
+(?P<language>.+)-tests:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ tests

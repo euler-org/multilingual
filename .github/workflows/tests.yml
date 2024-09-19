@@ -7,3 +7,29 @@ on:
   pull_request:
     branches:
       - main
+
+jobs:
+  unittest-python:
+    runs-on: ubuntu-latest
+    container:
+      image: spapanik/euler-py:2.0.0
+      options: --user root
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Use cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/venv-unittest
+          key: venv-unittest-${{ hashFiles('pyproject.toml') }}
+      - name: Install dependencies
+        run: |
+          cd python
+          python -m venv ~/.cache/venv-unittest
+          . ~/.cache/venv-unittest/bin/activate
+          yam install -g main -g test
+      - name: Unittest the project
+        run: |
+          cd python
+          . ~/.cache/venv-unittest/bin/activate
+          yam -e tests

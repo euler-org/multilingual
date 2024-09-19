@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 EULER_ROOT = PROJECT_ROOT.joinpath(".euler")
-Languages = Literal[""]
+Languages = Literal["python"]
 LANGUAGES = get_args(Languages)
 
 
@@ -52,7 +52,12 @@ def get_cases(case_keys: list[str], problem: str) -> list[tuple[str, ...]]:
 
 
 def get_solution(language: Languages, problem: str) -> list[str]:
-    raise NotImplementedError
+    match language:
+        case "python":
+            runner = ["python"]
+            executable_dir = PROJECT_ROOT.joinpath(language, "src", "solutions")
+            suffix = ".py"
+    return [*runner, executable_dir.joinpath(problem).with_suffix(suffix).as_posix()]
 
 
 def parse_args() -> Namespace:

@@ -8,11 +8,21 @@ $globals:
   commands:
     - yam -d ${language}/ install
 
+install:
+  phony: true
+  requires:
+    - python-install
+
 (?P<language>.+)-format:
   phony: true
   regex: true
   commands:
     - yam -d ${language}/ format
+
+format:
+  phony: true
+  requires:
+    - python-format
 
 (?P<language>.+)-lint:
   phony: true
@@ -20,8 +30,18 @@ $globals:
   commands:
     - yam -d ${language}/ lint
 
+lint:
+  phony: true
+  requires:
+    - python-lint
+
 (?P<language>.+)-tests:
   phony: true
   regex: true
   commands:
     - yam -d ${language}/ tests
+
+tests:
+  phony: true
+  requires:
+    - python-tests

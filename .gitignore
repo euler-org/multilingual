@@ -1,5 +1,13 @@
+# cache
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.cov_cache/
+
 # installation artifacts
 .yamk/
+p-lock.toml
 
 # local dev
 cookbook.yaml.d/

@@ -18,3 +18,8 @@ python:
   args:
     number_of_digits: int
   rtype: int
+
+rust:
+  args:
+    number_of_digits: u32
+  rtype: u64

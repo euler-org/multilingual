@@ -35,6 +35,7 @@ tests:
   requires:
     - install
   commands:
+    - cargo test
     - euler test -l rust
 
 src/:

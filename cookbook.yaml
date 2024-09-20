@@ -11,6 +11,7 @@ build:
   phony: true
   requires:
     - python-build
+    - rust-build
 
 (?P<language>.+)-install:
   phony: true
@@ -22,6 +23,7 @@ install:
   phony: true
   requires:
     - python-install
+    - rust-install
 
 (?P<language>.+)-format:
   phony: true
@@ -33,6 +35,7 @@ format:
   phony: true
   requires:
     - python-format
+    - rust-format
 
 (?P<language>.+)-lint:
   phony: true
@@ -44,6 +47,7 @@ lint:
   phony: true
   requires:
     - python-lint
+    - rust-lint
 
 (?P<language>.+)-tests:
   phony: true
@@ -55,3 +59,4 @@ tests:
   phony: true
   requires:
     - python-tests
+    - rust-tests

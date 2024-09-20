@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 EULER_ROOT = PROJECT_ROOT.joinpath(".euler")
-Languages = Literal["python"]
+Languages = Literal["python", "rust"]
 LANGUAGES = get_args(Languages)
 
 
@@ -56,6 +56,10 @@ def get_solution(language: Languages, problem: str) -> list[str]:
             runner = ["python"]
             executable_dir = PROJECT_ROOT.joinpath(language, "src", "solutions")
             suffix = ".py"
+        case "rust":
+            runner = []
+            executable_dir = PROJECT_ROOT.joinpath(language, "target", "release")
+            suffix = ""
     return [*runner, executable_dir.joinpath(problem).with_suffix(suffix).as_posix()]
 
 

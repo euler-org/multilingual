@@ -12,3 +12,9 @@ languages:
     runner_args:
       - --language
       - python
+
+  rust:
+    extension: rs
+    runner_args:
+      - --language
+      - rust

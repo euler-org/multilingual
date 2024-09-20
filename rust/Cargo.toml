@@ -13,3 +13,11 @@ lto = true
 opt-level = 3
 panic = "abort"
 strip = true
+
+[lib]
+name = "lib"
+path = "src/lib/lib.rs"
+
+[[bin]]
+name = "p001"
+path = "src/solutions/p001.rs"

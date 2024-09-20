@@ -33,3 +33,21 @@ jobs:
           cd python
           . ~/.cache/venv-unittest/bin/activate
           yam -e tests
+  unittest-rust:
+    runs-on: ubuntu-latest
+    container:
+      image: spapanik/euler-rust:2.0.0
+      options: --user root
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          cd rust
+          rustup default stable
+          yam install
+      - name: Unittest the project
+        run: |
+          cd rust
+          rustup default stable
+          yam -e tests

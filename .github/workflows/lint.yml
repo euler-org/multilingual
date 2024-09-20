@@ -33,3 +33,21 @@ jobs:
           cd python
           . ~/.cache/venv-lint/bin/activate
           yam -e lint
+  lint-rust:
+    runs-on: ubuntu-latest
+    container:
+      image: spapanik/euler-rust:2.0.0
+      options: --user root
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          cd rust
+          rustup default stable
+          yam install
+      - name: Lint the project
+        run: |
+          cd rust
+          rustup default stable
+          yam -e lint

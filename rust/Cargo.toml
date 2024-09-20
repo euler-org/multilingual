@@ -1,0 +1,15 @@
+[package]
+name = "multilingual"
+version = "1.0.0"
+edition = "2021"
+
+authors = ["Stephanos Kuma <stephanos@kuma.ai>"]
+description = "Example problems"
+license = "BSD-3-Clause"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true

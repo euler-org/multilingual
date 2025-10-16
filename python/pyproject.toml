@@ -15,7 +15,7 @@ license = { text = "BSD-3-Clause" }
 
 description = "Example problems"
 
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 
 [dependency-groups]
 dev = [
@@ -66,7 +66,7 @@ disallow_any_decorated = false # mock.MagicMock is Any
 src = [
     "src",
 ]
-target-version = "py313"
+target-version = "py314"
 
 [tool.ruff.lint]
 select = [
